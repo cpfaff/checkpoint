@@ -89,7 +89,8 @@ checkpoint <- function(snapshotDate, project = getwd(),
                        forceInstall = FALSE,
                        forceProject = FALSE,
                        authorizeFileSystemUse = TRUE,
-                       forceSetMranMirror = FALSE) {
+                       forceSetMranMirror = FALSE,
+                       installPackagesWithDependency = FALSE) {
 
   if(interactive()) validateProjectFolder(project)
 
@@ -226,9 +227,16 @@ checkpoint <- function(snapshotDate, project = getwd(),
         mssg(verbose, " - Installing ", sQuote(pkg))
         mssg(verbose, pkg)
         download_messages <- capture.output({
-          install.packages(pkgs = pkg, verbose = FALSE,
-                           quiet = FALSE,
-                           INSTALL_opts = "--no-lock")
+          if(installPackagesWithDependency){
+            install.packages(pkgs = pkg, verbose = FALSE,
+                             quiet = FALSE,
+                             dependencies T,
+                             INSTALL_opts = "--no-lock")
+          } else {
+            install.packages(pkgs = pkg, verbose = FALSE,
+                             quiet = FALSE,
+                             INSTALL_opts = "--no-lock")
+          }
         }, type = "message")
         checkpoint_log(
           download_messages,
