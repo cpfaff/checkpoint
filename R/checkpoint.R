@@ -60,6 +60,8 @@
 #' @param forceInstall If `TRUE`, forces the re-installation of all discovered packages and their dependencies. This is useful if, for some reason, the checkpoint archive becomes corrupted.
 #'
 #' @param forceProject If `TRUE`, forces the checkpoint process, even if the provided project folder doesn't look like an R project. A commonly reported user problem is that they accidentally trigger the checkpoint process from their home folder, resulting in scanning many R files and downloading many packages. To prevent this, we use a heuristic to determine if the project folder looks like an R project. If the project folder is the home folder, and also contains no R files, then `checkpoint()` asks for confirmation to continue.
+#' @param authorizeFileSystemUse Allows to diable the questions when creating folders and makes the function scriptable.
+#' @param forceSetMranMirror Allows setting up the mirror to a date even if there is no pakcages found. This allows an interactive installation after the checkpint creation.
 #'
 #' @return Checkpoint is called for its side-effects (see the details section), but invisibly returns a list with elements:
 #' * `files_not_scanned`
