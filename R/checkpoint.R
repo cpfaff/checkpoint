@@ -86,7 +86,8 @@ checkpoint <- function(snapshotDate, project = getwd(),
                        scan.rnw.with.knitr = FALSE,
                        forceInstall = FALSE,
                        forceProject = FALSE,
-                       authorizeFileSystemUse = TRUE) {
+                       authorizeFileSystemUse = TRUE,
+                       forceSetMranMirror = FALSE) {
 
   if(interactive()) validateProjectFolder(project)
 
@@ -251,6 +252,10 @@ checkpoint <- function(snapshotDate, project = getwd(),
   # Set last accessed date
   setAccessDate(snapshotDate = snapshotDate,
                 checkpointLocation = checkpointLocation)
+
+  if(forceSetMranMirror){
+    setMranMirror(snapshotUrl = snapshoturl)
+  }
 
   # All done
   mssg(verbose, "checkpoint process complete")
