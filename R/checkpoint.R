@@ -231,7 +231,7 @@ checkpoint <- function(snapshotDate, project = getwd(),
           if(installPackagesWithDependency){
             install.packages(pkgs = pkg, verbose = FALSE,
                              quiet = FALSE,
-                             dependencies T,
+                             dependencies = TRUE,
                              INSTALL_opts = "--no-lock")
           } else {
             install.packages(pkgs = pkg, verbose = FALSE,
