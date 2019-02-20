@@ -100,7 +100,7 @@ checkpoint <- function(snapshotDate, project = getwd(),
   stopIfInvalidDate(snapshotDate, online = scanForPackages)
 
   if(forceCreateFolders){
-  if(createFolders(snapshotDate = snapshotDate,
+  if(!createFolders(snapshotDate = snapshotDate,
                     checkpointLocation = checkpointLocation))
     stop("Unable to create checkpoint folders at checkpointLocation = \"",
          checkpointLocation, "\"")
