@@ -89,6 +89,7 @@ checkpoint <- function(snapshotDate, project = getwd(),
                        scan.rnw.with.knitr = FALSE,
                        forceInstall = FALSE,
                        forceProject = FALSE,
+                       forceCreateFolders = FALSE,
                        authorizeFileSystemUse = TRUE,
                        forceSetMranMirror = FALSE,
                        installPackagesWithDependency = FALSE) {
@@ -97,6 +98,14 @@ checkpoint <- function(snapshotDate, project = getwd(),
 
   # Perform validation on dates
   stopIfInvalidDate(snapshotDate, online = scanForPackages)
+
+  if(forceCreateFolders){
+  if(createFolders(snapshotDate = snapshotDate,
+                    checkpointLocation = checkpointLocation))
+    stop("Unable to create checkpoint folders at checkpointLocation = \"",
+         checkpointLocation, "\"")
+  }
+
   if(!scanForPackages){
     mssg(verbose, "Skipping package scanning")
     if(!snapshotDate %in% localSnapshots(checkpointLocation = checkpointLocation))
