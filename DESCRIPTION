@@ -1,4 +1,4 @@
-Package: yspm-checkpoint
+Package: yspmcheckpoint
 Title: Install Packages from Snapshots on the Checkpoint Server for
     Reproducibility
 Description: The goal of checkpoint is to solve the problem of package
