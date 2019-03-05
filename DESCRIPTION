@@ -1,4 +1,4 @@
-Package: checkpoint
+Package: yspm-checkpoint
 Title: Install Packages from Snapshots on the Checkpoint Server for
     Reproducibility
 Description: The goal of checkpoint is to solve the problem of package
@@ -36,5 +36,5 @@ Suggests:
     mockery,
     cli
 VignetteBuilder: knitr
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1
 Roxygen: list(markdown = TRUE)
